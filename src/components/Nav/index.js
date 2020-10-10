@@ -1,10 +1,5 @@
 import React, { useEffect } from 'react';
-
 import { capitalizeFirstLetter } from '../../utils/helpers';
-
-// function categorySelected(name) {
-//   console.log(`${name} clicked`);
-// }
 
 function Nav(props) {
   const { categories = [], setCurrentCategory, currentCategory } = props;
