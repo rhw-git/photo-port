@@ -6,6 +6,7 @@ import Gallery from './components/Gallery';
 import ContactForm from './components/Contact';
 
 function App() {
+  // hook for all photo categories
   const [categories] = useState([
     {
       name: 'commercial',
@@ -20,6 +21,8 @@ function App() {
     },
   ]);
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
+  // hook for contact form SPA
+  const [contactSelected, setContactSelected] = useState(false);
 
   return (
     <div>
@@ -27,11 +30,18 @@ function App() {
         categories={categories}
         setCurrentCategory={setCurrentCategory}
         currentCategory={currentCategory}
+        contactSelected={contactSelected}
+        setContactSelected={setContactSelected}
       ></Nav>
       <main>
-        <ContactForm></ContactForm>
-        <Gallery currentCategory={currentCategory}></Gallery>
-        <About></About>
+        {!contactSelected ? (
+          <>
+            <Gallery currentCategory={currentCategory}></Gallery>
+            <About></About>
+          </>
+        ) : (
+          <ContactForm></ContactForm>
+        )}
       </main>
     </div>
   );
